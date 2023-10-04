@@ -1,15 +1,16 @@
+require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 const fetch = require('node-fetch');
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  const zip = req.query.zip;
+  const zip = 47905; //req.query.zip;
   const url = 'https://flixster.p.rapidapi.com/theaters/list?zipCode=' + zip + '&radius=50';
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'fc9daa89fbmsheb86af0b4834aedp1b64c5jsn5a6a8657a858',
+      'X-RapidAPI-Key': process.env.FLIXSTER_API_KEY,
       'X-RapidAPI-Host': 'flixster.p.rapidapi.com'
     }
   };
