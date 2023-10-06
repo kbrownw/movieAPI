@@ -1,0 +1,149 @@
+{
+  "data": {
+    "theaters": [
+      {
+        "id": "nx9fDyfpDcGvFwX",
+        "tid": "AAJGD",
+        "name": "GQT Eastside 10 IMAX",
+        "latitude": 40.4144,
+        "longitude": -86.8521,
+        "hasShowtimes": "true",
+        "hasReservedSeating": true,
+        "isTicketing": true,
+        "distance": 5.393528530927712
+      },
+      {
+        "id": "BQbfK1febsg8Frl",
+        "tid": "AAMGP",
+        "name": "GQT Lafayette 7",
+        "latitude": 40.4027,
+        "longitude": -86.8481,
+        "hasShowtimes": "false",
+        "hasReservedSeating": true,
+        "isTicketing": true,
+        "distance": 5.70794779863162
+      },
+      {
+        "id": "YkgfGwf9zH2jCxP",
+        "tid": "AAOTX",
+        "name": "GQT Wabash Landing 9",
+        "latitude": 40.4211,
+        "longitude": -86.9019,
+        "hasShowtimes": "true",
+        "hasReservedSeating": true,
+        "isTicketing": true,
+        "distance": 7.566266197572572
+      },
+      {
+        "id": "X6NTYgfARTBdc1G",
+        "tid": "AANWC",
+        "name": "AMC CLASSIC Crawfordsville 8",
+        "latitude": 40.0222,
+        "longitude": -86.8969,
+        "hasShowtimes": "true",
+        "hasReservedSeating": false,
+        "isTicketing": true,
+        "distance": 30.786399875030963
+      },
+      {
+        "id": "apPfrAfy9iKas66",
+        "tid": "AAPMZ",
+        "name": "GQT Lebanon 7",
+        "latitude": 40.06041,
+        "longitude": -86.4734,
+        "hasShowtimes": "true",
+        "hasReservedSeating": false,
+        "isTicketing": true,
+        "distance": 31.400079344567015
+      },
+      {
+        "id": "424FVQf69cLdTll",
+        "tid": "AAXCZ",
+        "name": "Mary Max Cinemas Logansport 5",
+        "latitude": 40.75948,
+        "longitude": -86.31362,
+        "hasShowtimes": "true",
+        "hasReservedSeating": false,
+        "isTicketing": true,
+        "distance": 31.62225894157175
+      },
+      {
+        "id": "or9fDlfJqS9jIzN",
+        "tid": "AATWY",
+        "name": "AMC CLASSIC Kokomo 12",
+        "latitude": 40.4625,
+        "longitude": -86.1132,
+        "hasShowtimes": "true",
+        "hasReservedSeating": false,
+        "isTicketing": true,
+        "distance": 34.295138895203095
+      },
+      {
+        "id": "zW1f48hRytjLs69",
+        "tid": "AAVMU",
+        "name": "GQT Brownsburg 8 GDX",
+        "latitude": 39.86858,
+        "longitude": -86.39063,
+        "hasShowtimes": "true",
+        "hasReservedSeating": true,
+        "isTicketing": true,
+        "distance": 45.17982719900144
+      },
+      {
+        "id": "X6NTYgfA4CB8f1K",
+        "tid": "AATAS",
+        "name": "AMC Traders Point 12",
+        "latitude": 39.91081,
+        "longitude": -86.26353,
+        "hasShowtimes": "true",
+        "hasReservedSeating": true,
+        "isTicketing": true,
+        "distance": 46.076624765044315
+      },
+      {
+        "id": "0xwfmPfAetZRcn9",
+        "tid": "AAEJQ",
+        "name": "Regal Village Park",
+        "latitude": 40.0005,
+        "longitude": -86.1216,
+        "hasShowtimes": "true",
+        "hasReservedSeating": true,
+        "isTicketing": true,
+        "distance": 46.32392802181144
+      },
+      {
+        "id": "lx9fYrf1nfqVivp",
+        "tid": "AAXPH",
+        "name": "Flix Brewhouse Carmel",
+        "latitude": 39.95958,
+        "longitude": -86.11782,
+        "hasShowtimes": "true",
+        "hasReservedSeating": true,
+        "isTicketing": true,
+        "distance": 48.43823105890977
+      },
+      {
+        "id": "gyKfa9fZmtP0Txy",
+        "tid": "AAVCQ",
+        "name": "The Royal Theater",
+        "latitude": 39.758,
+        "longitude": -86.5311,
+        "hasShowtimes": "false",
+        "hasReservedSeating": false,
+        "isTicketing": true,
+        "distance": 49.81550897364939
+      },
+      {
+        "id": "JB2fqyfvnuZjcVO",
+        "tid": "AATXN",
+        "name": "Regal Noblesville",
+        "latitude": 40.0386,
+        "longitude": -85.9934,
+        "hasShowtimes": "true",
+        "hasReservedSeating": true,
+        "isTicketing": true,
+        "distance": 49.911010830489474
+      }
+    ]
+  }
+}
