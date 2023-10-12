@@ -7,13 +7,13 @@
 var app = require("../app");
 var debug = require("debug")("movieapi:server");
 var http = require("http");
-var https = require("https");
-var fs = require("fs");
+// var https = require("https");
+// var fs = require("fs");
 
-var options = {
-  key: fs.readFileSync("../certificate/selfsigned.key"),
-  cert: fs.readFileSync("../certificate/selfsigned.crt"),
-};
+// var options = {
+//   key: fs.readFileSync("../certificate/selfsigned.key"),
+//   cert: fs.readFileSync("../certificate/selfsigned.crt"),
+// };
 /**
  * Get port from environment and store in Express.
  */
@@ -26,7 +26,7 @@ app.set("port", port);
  */
 
 var server = http.createServer(app);
-var secureServer = https.createServer(options, app);
+// var secureServer = https.createServer(options, app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -36,9 +36,9 @@ server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
 
-secureServer.listen(3001);
-secureServer.on("error", onError);
-secureServer.on("listening", onListening);
+// secureServer.listen(3001);
+// secureServer.on("error", onError);
+// secureServer.on("listening", onListening);
 
 /**
  * Normalize a port into a number, string, or false.
