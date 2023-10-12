@@ -12,7 +12,7 @@ var fs = require("fs");
 
 var options = {
   key: fs.readFileSync("../certificate/selfsigned.key"),
-  cert: fs.readFileSync("../certifacte/selfsigned.crt"),
+  cert: fs.readFileSync("../certificate/selfsigned.crt"),
 };
 /**
  * Get port from environment and store in Express.
