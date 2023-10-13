@@ -22,7 +22,7 @@ router.get("/", async function (req, res) {
 
   if (process.env.NODE_ENV === "dev") {
     console.log("Using local data");
-    url = "http://localhost:3000/theaters/list/" + zip + ".json";
+    url = "http://localhost:8080/theaters/list/" + zip + ".json";
   }
 
   try {
@@ -41,7 +41,7 @@ router.get("/showtimes", async function (req, res) {
 
   if (process.env.NODE_ENV === "dev") {
     console.log("Using local data.");
-    url = "http://localhost:3000/theaters/detail/" + theater + ".json";
+    url = "http://localhost:8080/theaters/detail/" + theater + ".json";
   }
 
   try {
