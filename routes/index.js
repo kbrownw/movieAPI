@@ -11,10 +11,16 @@ const options = {
   },
 };
 
+//  Move list cache
+
+let theaterListCache = {};
+
 /* GET home page. */
 
 router.get("/", async function (req, res) {
   const zip = req.query.zipCode;
+  const currentDate = new Date();
+
   let url =
     "https://flixster.p.rapidapi.com/theaters/list?zipCode=" +
     zip +
@@ -25,9 +31,26 @@ router.get("/", async function (req, res) {
     url = "http://localhost:8080/theaters/list/" + zip + ".json";
   }
 
+  if (theaterListCache[zip]) {
+    const cachedTime = theaterListCache[zip].date;
+    const expireTime = cachedTime.setDate(cachedTime.getDate() + 7);
+    const expired = cachedTime.getTime() > expireTime;
+
+    if (!expired) {
+      console.log("Using theater list cache.");
+      return res.json(theaterListCache[zip].data);
+    } else {
+      console.log("Deleted stale record " + zip);
+      delete theaterListCache[zip];
+    }
+  }
   try {
     const response = await fetch(url, options);
     const result = await response.json();
+    theaterListCache[zip] = {};
+    theaterListCache[zip]["date"] = currentDate;
+    theaterListCache[zip]["data"] = result;
+    console.log("Using API block data.");
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -38,9 +61,10 @@ router.get("/", async function (req, res) {
 router.get("/showtimes", async function (req, res) {
   const theater = req.query.id;
   let url = "https://flixster.p.rapidapi.com/theaters/detail?id=" + theater;
+  console.log(theater);
 
   if (process.env.NODE_ENV === "dev") {
-    console.log("Using local data.");
+    console.log("Using local data for showtimes.");
     url = "http://localhost:8080/theaters/detail/" + theater + ".json";
   }
 
