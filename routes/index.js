@@ -22,26 +22,23 @@ router.get("/", async function (req, res) {
   const zip = req.query.zipCode;
   const currentDate = new Date();
 
-  let url =
-    "https://flixster.p.rapidapi.com/theaters/list?zipCode=" +
-    zip +
-    "&radius=50";
+  let url = `https://flixster.p.rapidapi.com/theaters/list?zipCode=${zip}&radius=50`;
 
   if (process.env.NODE_ENV === "dev") {
     console.log("Using local data");
-    url = "http://localhost:8080/theaters/list/" + zip + ".json";
+    url = `http://localhost:8080/theaters/list/${zip}.json`;
   }
 
   if (theaterListCache[zip]) {
     const cachedTime = theaterListCache[zip].date;
     const expireTime = cachedTime.setDate(cachedTime.getDate() + 7);
-    const expired = cachedTime.getTime() > expireTime;
+    const expired = currentDate.getTime() > expireTime;
 
     if (!expired) {
       console.log("Using theater list cache.");
       return res.json(theaterListCache[zip].data);
     } else {
-      console.log("Deleted stale record " + zip);
+      console.log(`Deleted stale record ${zip}.`);
       delete theaterListCache[zip];
     }
   }
@@ -49,9 +46,10 @@ router.get("/", async function (req, res) {
     const response = await fetch(url, options);
     const result = await response.json();
     // Store result in theater cache variable
-    theaterListCache[zip] = {};
-    theaterListCache[zip]["date"] = currentDate;
-    theaterListCache[zip]["data"] = result;
+    theaterListCache[zip] = {
+      date: currentDate,
+      data: result,
+    };
     console.log("Using API block data.");
     res.json(result);
   } catch (error) {
@@ -66,13 +64,13 @@ router.get("/showtimes", async function (req, res) {
   const day = currentDate.getDate();
   const month = currentDate.getMonth();
   const year = currentDate.getFullYear();
-  const timestamp = day + "-" + month + "-" + year;
-  let url = "https://flixster.p.rapidapi.com/theaters/detail?id=" + theater;
+  const timestamp = `${year}-${month}-${day}`;
+  let url = `https://flixster.p.rapidapi.com/theaters/detail?id=${theater}`;
   console.log(theater);
 
   if (process.env.NODE_ENV === "dev") {
     console.log("Using local data for showtimes.");
-    url = "http://localhost:8080/theaters/detail/" + theater + ".json";
+    url = `http://localhost:8080/theaters/detail/${theater}.json`;
   }
 
   //  Use showtimes data if it exists in cache
@@ -90,9 +88,10 @@ router.get("/showtimes", async function (req, res) {
     const response = await fetch(url, options);
     const result = await response.json();
     // Store data in cache variable
-    showtimesCache[theater] = {};
-    showtimesCache[theater]["date"] = timestamp;
-    showtimesCache[theater]["data"] = result;
+    showtimesCache[theater] = {
+      date: timestamp,
+      data: result,
+    };
     console.log(result);
     res.json(result);
   } catch (error) {
