@@ -14,6 +14,7 @@ const options = {
 //  Move list cache
 
 let theaterListCache = {};
+let showtimesCache = {};
 
 /* GET home page. */
 
@@ -47,6 +48,7 @@ router.get("/", async function (req, res) {
   try {
     const response = await fetch(url, options);
     const result = await response.json();
+    // Store result in theater cache variable
     theaterListCache[zip] = {};
     theaterListCache[zip]["date"] = currentDate;
     theaterListCache[zip]["data"] = result;
@@ -60,6 +62,11 @@ router.get("/", async function (req, res) {
 
 router.get("/showtimes", async function (req, res) {
   const theater = req.query.id;
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const month = currentDate.getMonth();
+  const year = currentDate.getFullYear();
+  const timestamp = day + "-" + month + "-" + year;
   let url = "https://flixster.p.rapidapi.com/theaters/detail?id=" + theater;
   console.log(theater);
 
@@ -68,9 +75,24 @@ router.get("/showtimes", async function (req, res) {
     url = "http://localhost:8080/theaters/detail/" + theater + ".json";
   }
 
+  //  Use showtimes data if it exists in cache
+  if (showtimesCache[theater]) {
+    if (showtimesCache[theater].date == timestamp) {
+      console.log("Using cached showtime data.");
+      return res.json(showtimesCache[theater].data);
+    } else {
+      // If cached showtimes data is old, delete it
+      delete showtimesCache[theater];
+    }
+  }
+
   try {
     const response = await fetch(url, options);
     const result = await response.json();
+    // Store data in cache variable
+    showtimesCache[theater] = {};
+    showtimesCache[theater]["date"] = timestamp;
+    showtimesCache[theater]["data"] = result;
     console.log(result);
     res.json(result);
   } catch (error) {
